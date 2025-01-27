@@ -1,40 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Zilla+Slab|Zilla+Slab+Highlight&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Zilla+Slab|Zilla+Slab+Highlight&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200..900&display=swap");
+
+/* Zilla Slab */
+/* @import url("https://use.typekit.net/ggz3hqn.css"); */
+/* Source Sans Pro */
+/* @import url("https://use.typekit.net/ggz3hqn.css"); */
 
 /* Reset */
 
-* { box-sizing: border-box; }
-
-
-/* Mozilla Fonts */
-
-@font-face {
-  font-family: 'Inter';
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/15542/inter-regular-webfont.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
+* {
+  box-sizing: border-box;
 }
-
-@font-face {
-  font-family: 'Inter';
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/15542/inter-italic-webfont.woff2') format('woff2');
-  font-weight: normal;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/15542/inter-bold-webfont.woff2') format('woff2');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/15542/inter-bolditalic-webfont.woff2') format('woff2');
-  font-weight: bold;
-  font-style: italic;
-}
-
 
 /* Defaults */
 
@@ -42,21 +18,26 @@ html {
   --light: 1;
   --dark: -1;
   --mode: var(--demo-mode, var(--os-mode, 1));
+  /* --mode: 1; */
   --unmode: calc(var(--mode) * -1);
   --zero: calc((var(--mode) + 1) / 2);
   --unzero: calc((var(--unmode) + 1) / 2);
-  
+
   /* fonts */
-  --zilla: 'Zilla Slab', serif;
-  --zilla-highlight: 'Zilla Slab Highlight', serif;
-  --inter: 'Inter', sans-serif;
-  
+  --zilla: "Zilla Slab", serif;
+  /* --zilla-highlight: "Zilla Slab Highlight", serif; */
+  /* --inter: "Inter", sans-serif; */
+  /* --zilla: "zilla-slab", serif; */
+  /* --source: "source-sans-pro", sans-serif; */
+  --source: "Source Sans 3", serif;
+
   /* primary colors */
   --neon-blue: #00ffff;
   --lemon-yellow: #fff44f;
   --warm-red: #ff4f5e;
   --neon-green: #54ffbd;
   --dark-purple: #6e008b;
+  --upsc-blue: #312f38;
 
   /* secondary colors */
   --dark-green: #005e5e;
@@ -65,22 +46,22 @@ html {
   --light-grey: #e7e5e2;
 
   /* main color usage */
-  --background: hsl(0deg, 100%, calc(100% * var(--mode)));
-  --color: hsl(0deg, 100%, calc(100% * var(--unmode)));
+  /* --background: hsl(0deg, 100%, calc(100% * var(--mode))); */
+  /* --color: hsl(0deg, 100%, calc(100% * var(--unmode))); */
+  --background: hsl(0deg, 100%, calc(100% * var(--zero)));
+  --color: hsl(0deg, 100%, calc(100% * var(--unzero)));
   --callout: hsla(0deg, 0%, 50%, 0.25);
 
   /* action colors */
-  --action: hsl(
-    180deg,
-    50%,
-    calc((50% * var(--unzero)) + (18% * var(--zero)))
-  );
+  --action: hsl(180deg, 50%, calc((50% * var(--unzero)) + (18% * var(--zero))));
+  /* --hover: hsl(180deg, 100%, calc((50% * var(--unzero)) + (18% * var(--zero)))); */
+
   --hover: hsl(
-    180deg,
-    100%,
-    calc((50% * var(--unzero)) + (18% * var(--zero)))
+    270deg,
+    /* Shift to purple */ 80%,
+    /* Medium-high saturation */
+      calc((80% * var(--unzero)) + (70% * var(--zero))) /* Dynamic lightness */
   );
-  
   /* sizes */
   --font-scale: 0.5vmin;
   --radius: 0.25em;
@@ -88,42 +69,49 @@ html {
   /* applied… */
   background-color: var(--background);
   color: var(--color);
-  font-family: var(--inter);
+  /* font-family: var(--inter); */
+  font-family: var(--source);
   font-size: calc(1em + var(--font-scale));
   line-height: 1.4;
 }
 
 @media (prefers-color-scheme: dark) {
-  html { 
-    --os-mode: -1; 
+  html {
+    --os-mode: -1;
   }
 }
 
-body {
+/* body {
   padding: 1em;
-}
-
+} */
 
 /* Headings */
 
+/*
 h1 {
   font-family: var(--zilla-highlight);
 }
+*/
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: bold;
   line-height: 1;
-  margin: 0.5em 0;
+  /* margin: 0.5em 0; */
 }
 
-h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: var(--zilla);
 }
 
-
 /* Links */
 
-a:link,
+/* a:link,
 a:visited {
   color: var(--action);
   font-family: var(--zilla);
@@ -136,35 +124,38 @@ a:active {
   color: var(--hover);
   font-family: var(--zilla-highlight);
   text-decoration: underline;
-}
-
+} */
 
 /* Buttons */
 
 button {
-  background: var(--action) linear-gradient(to top, hsla(0, 0%, 100%, 0.125) 50%, transparent 50%);
-  border: 2px solid var(--hover);
-  border-radius: var(--radius);
-  color: var(--background);
-  cursor: pointer;
-  font: inherit;
-  font-family: var(--zilla);
-  font-weight: bold;
-  font-style: italic;
-  padding: 0.125em 1em;
+  /* background: var(--action) */
+    /* linear-gradient(to top, hsla(0, 0%, 100%, 0.125) 50%, transparent 50%); */
+  /* border: 2px solid var(--hover); */
+  /* border-radius: var(--radius); */
+  /* color: var(--background); */
+  /* cursor: pointer; */
+  /* font: inherit; */
+  font-family: var(--source);
+  /* font-weight: bold; */
+  /* font-style: italic; */
+  /* padding: 0.125em 1em; */
 }
 
-button:hover,
+/* button:hover,
 button:focus,
 button:active {
   background-color: var(--hover);
   border-color: var(--color);
-}
+} */
 
-button:active {
-  background-image: linear-gradient(to bottom, hsla(0, 0%, 100%, 0.125) 50%, transparent 50%);
-}
-
+/* button:active {
+  background-image: linear-gradient(
+    to bottom,
+    hsla(0, 0%, 100%, 0.125) 50%,
+    transparent 50%
+  );
+} */
 
 /* Forms */
 
@@ -178,24 +169,19 @@ button:active {
   font-style: italic;
 }
 
-input[type=text],
-input[type=email],
+input[type="text"],
+input[type="email"],
 textarea {
-  background: var(--callout);
-  border: 2px solid var(--action);
-  border-radius: 0 var(--radius);
-  color: var(--color);
-  font-family: var(--zilla);
-  padding: 0.25em;
+  /* background: var(--callout); */
+  /* border: 2px solid var(--action); */
+  /* border-radius: 0 var(--radius); */
+  /* color: var(--color); */
+  font-family: var(--source);
+  /* padding: 0.25em; */
 }
 
-input[type=text]:focus,
-input[type=email]:focus,
+/* input[type="text"]:focus,
+input[type="email"]:focus,
 textarea:focus {
   border-color: var(--hover);
-}
-
-textarea {
-  min-height: 6em;
-}
-
+} */
